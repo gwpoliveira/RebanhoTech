@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+    <h1 class="text-center bg-success font-weight-bold text-light mb-5">Confirmar Exclusão</h1>
+    <div class="container-fluid">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <p class="text-danger">Você tem certeza que deseja excluir o registro "{{ object }}"?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Sim, excluir</button>
+                    </form>
+                    <a href="{% url 'genealogia-list' %}" class="btn btn-secondary my-5">Cancelar</a>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

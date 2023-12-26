@@ -12,6 +12,7 @@ urlpatterns = [
     path('saude_medicamentos/', include('saude_medicamentos.urls')),
     path('reproducao/', include('reproducao.urls')),
     path('pesagem/', include('pesagem.urls')),
+    path('genealogia/', include('genealogia.urls')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

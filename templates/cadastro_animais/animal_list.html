@@ -40,8 +40,8 @@
                         <td>{{ animal.marcacoes }}</td>
                         <td><a class="btn btn-warning" href="{% url 'animal-update' animal.pk %}" role="button">Editar</a></td>
                         <td><a class="btn btn-danger" href="{% url 'animal-delete' animal.pk %}" role="button">Excluir</a></td>
-                        {% endfor %}
                     </tr>                    
+                    {% endfor %}
                 </tbody>
             </table>
                 

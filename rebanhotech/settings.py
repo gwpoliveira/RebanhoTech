@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'saude_medicamentos',
     'reproducao',
     'pesagem',
+    'genealogia',
 ]
 
 MIDDLEWARE = [
