@@ -1,0 +1,52 @@
+<!-- templates/cadastro_animais/animal_list.html -->
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Listagem de Animais{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class = 'text-center bg-success font-weight-bold text-light'>Lista de Animais</h1>
+        <ul>
+            <table class="table table-secondary table-striped align-baseline">
+                <thead>
+                    <tr>
+                        <th scope="col">Identificação</th>
+                        <th scope="col">Raça</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">D. Nascimento</th>
+                        <th scope="col">Marcações</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for animal in object_list %}
+                        <td>{{ animal.identificacao }}</td>
+                        <td>{{ animal.raca }}</td>
+                        <td>
+                        {% if animal.foto %}
+                            <img src="{{ animal.foto.url }}" alt="{{ animal.identificacao }} Foto" width="200">
+                        {% else %}
+                            <span>Sem foto</span>
+                        {% endif %}
+                        </td>
+                        <td>{{ animal.sexo }}</td>
+                        <td>{{ animal.cor }}</td>
+                        <td>{{ animal.data_nascimento }}</td>
+                        <td>{{ animal.marcacoes }}</td>
+                        <td><a class="btn btn-warning" href="{% url 'animal-update' animal.pk %}" role="button">Editar</a></td>
+                        <td><a class="btn btn-danger" href="{% url 'animal-delete' animal.pk %}" role="button">Excluir</a></td>
+                        {% endfor %}
+                    </tr>                    
+                </tbody>
+            </table>
+                
+        </ul>
+        {% bootstrap_pagination page_obj %}
+        <a class="btn btn-success" href="{% url 'animal-create' %}" role="button">Cadastrar Novo Animal</a>
+    </div>
+{% endblock %}

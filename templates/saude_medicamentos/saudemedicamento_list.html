@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Lista de Saúde e Medicamentos{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="text-center bg-success font-weight-bold text-light">Lista de Saúde e Medicamentos</h1>
+        <ul>
+            <table class="table table-secondary table-striped align-baseline">
+                <thead>
+                    <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Data de Registro</th>
+                        <th scope="col">Tipo de Registro</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for saude_medicamento in object_list %}
+                        <tr>
+                            <td>{{ saude_medicamento.animal.identificacao }}</td>
+                            <td>{{ saude_medicamento.data_registro }}</td>
+                            <td>{{ saude_medicamento.tipo_registro }}</td>
+                            <td>{{ saude_medicamento.descricao }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'saudemedicamento-update' saude_medicamento.pk %}" role="button">Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="{% url 'saudemedicamento-delete' saude_medicamento.pk %}" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+        {% bootstrap_pagination page_obj %}
+        <a class="btn btn-success" href="{% url 'saudemedicamento-create' %}" role="button">Novo Registro</a>
+    </div>
+{% endblock %}

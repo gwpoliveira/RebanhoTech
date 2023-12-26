@@ -1,0 +1,20 @@
+<!-- templates/cadastro_animais/animal_form.html -->
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Animais{% endblock %}
+
+{% block content %}
+    <h1 class = 'text-center bg-success font-weight-bold text-light mb-5'>Animais</h1>
+    <div class="container-fluid">
+        <form method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+    </div>
+    
+    <a class="btn btn-primary mt-5" href="{% url 'animal-list' %}">Voltar para a Lista de Animais</a>
+{% endblock %}

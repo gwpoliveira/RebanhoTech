@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Movimentações{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="text-center bg-success font-weight-bold text-light">Lista de Movimentações</h1>
+        <ul>
+            <table class="table table-secondary table-striped align-baseline">
+                <thead>
+                    <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Tipo de Movimentação</th>
+                        <th scope="col">Data de Movimentação</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movimentacao in object_list %}
+                        <tr>
+                            <td>{{ movimentacao.animal.identificacao }}</td>
+                            <td>{{ movimentacao.tipo_movimentacao }}</td>
+                            <td>{{ movimentacao.data_movimentacao }}</td>
+                            <td>{{ movimentacao.descricao }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'movimentacaoanimal-update' movimentacao.pk %}" role="button">Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="{% url 'movimentacaoanimal-delete' movimentacao.pk %}" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+        {% bootstrap_pagination page_obj %}
+        <a class="btn btn-success" href="{% url 'movimentacaoanimal-create' %}" role="button">Nova Movimentação</a>
+    </div>
+{% endblock %}

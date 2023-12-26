@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Lista de Reprodução{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="text-center bg-success font-weight-bold text-light">Lista de Reprodução</h1>
+        <ul>
+            <table class="table table-secondary table-striped align-baseline">
+                <thead>
+                    <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Data de Cobertura</th>
+                        <th scope="col">Data de Parto</th>
+                        <th scope="col">Número de Filhotes</th>
+                        <th scope="col">Data de Desmama</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reproducao in object_list %}
+                        <tr>
+                            <td>{{ reproducao.animal.identificacao }}</td>
+                            <td>{{ reproducao.data_cobertura }}</td>
+                            <td>{{ reproducao.data_parto }}</td>
+                            <td>{{ reproducao.numero_filhotes }}</td>
+                            <td>{{ reproducao.data_desmama }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'reproducao-update' reproducao.pk %}" role="button">Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="{% url 'reproducao-delete' reproducao.pk %}" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+        {% bootstrap_pagination page_obj %}
+        <a class="btn btn-success" href="{% url 'reproducao-create' %}" role="button">Novo Registro</a>
+    </div>
+{% endblock %}
