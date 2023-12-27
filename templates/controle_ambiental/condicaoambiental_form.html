@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Condição Ambiental{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center bg-success font-weight-bold text-light">Condição Ambiental</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+    </div>
+{% endblock %}

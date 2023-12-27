@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Lista de Condições Ambientais{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center bg-success font-weight-bold text-light">Condições Ambientais</h1>
+        <table class="table table-secondary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Data de Registro</th>
+                    <th scope="col">Temperatura</th>
+                    <th scope="col">Umidade</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for condicao in object_list %}
+                    <tr>
+                        <td>{{ condicao.data_registro }}</td>
+                        <td>{{ condicao.temperatura }}</td>
+                        <td>{{ condicao.umidade }}</td>
+                        <td>{{ condicao.descricao }}</td>
+                        <td><a href="{% url 'condicaoambiental-update' condicao.pk %}">Editar</a></td>
+                        <td><a href="{% url 'condicaoambiental-delete' condicao.pk %}">Excluir</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-success" href="{% url 'condicaoambiental-create' %}">Nova Condição Ambiental</a>
+    </div>
+{% endblock %}

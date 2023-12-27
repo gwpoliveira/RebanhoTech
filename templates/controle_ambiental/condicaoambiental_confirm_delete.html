@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center bg-danger font-weight-bold text-light">Confirmar Exclusão</h1>
+        <p>Você tem certeza que deseja excluir a condição ambiental "{{ object.descricao }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+            <a class="btn btn-secondary" href="{% url 'condicaoambiental-list' %}">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

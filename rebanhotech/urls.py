@@ -14,6 +14,7 @@ urlpatterns = [
     path('pesagem/', include('pesagem.urls')),
     path('genealogia/', include('genealogia.urls')),
     path('custo/', include('custo.urls')),
+    path('controle_ambiental/', include('controle_ambiental.urls')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
