@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Lista de Custos{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="text-center bg-success font-weight-bold text-light">Lista de Custos</h1>
+        <ul>
+            <table class="table table-secondary table-striped align-baseline">
+                <thead>
+                    <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Valor (R$)</th>
+                        <th scope="col">Data de Registro</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for custo in object_list %}
+                        <tr>
+                            <td>{{ custo.animal.identificacao }}</td>
+                            <td>{{ custo.categoria }}</td>
+                            <td>{{ custo.descricao }}</td>
+                            <td>{{ custo.valor }}</td>
+                            <td>{{ custo.data_registro }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'custo-update' custo.pk %}" role="button">Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="{% url 'custo-delete' custo.pk %}" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+        {% bootstrap_pagination page_obj %}
+        <a class="btn btn-success" href="{% url 'custo-create' %}" role="button">Novo Custo</a>
+    </div>
+{% endblock %}

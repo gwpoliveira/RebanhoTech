@@ -13,6 +13,7 @@ urlpatterns = [
     path('reproducao/', include('reproducao.urls')),
     path('pesagem/', include('pesagem.urls')),
     path('genealogia/', include('genealogia.urls')),
+    path('custo/', include('custo.urls')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

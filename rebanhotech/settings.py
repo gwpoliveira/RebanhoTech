@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'reproducao',
     'pesagem',
     'genealogia',
+    'custo',
+    'controle_ambiental',
 ]
 
 MIDDLEWARE = [

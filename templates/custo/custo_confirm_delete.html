@@ -1,0 +1,19 @@
+<!-- templates/custos/custo_confirm_delete.html -->
+
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Confirmação de Exclusão{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="text-center bg-danger font-weight-bold text-light">Confirmação de Exclusão</h1>
+        <p>Você tem certeza de que deseja excluir o registro de custo de '{{ object.animal.identificacao }}'?</p>
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="post" value="true">
+            <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        </form>
+        <a class="btn btn-secondary" href="{% url 'custo-list' %}">Cancelar</a>
+    </div>
+{% endblock %}
