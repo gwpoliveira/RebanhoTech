@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid ">
           <a class="navbar-brand" href="#">
@@ -60,9 +61,7 @@
                     <a class="nav-link" href="{% url 'condicaoambiental-list' %}">
                         Condições Ambientais
                     </a>
-                </li>
-                
-            
+                </li>      
             </ul>
         </div>
       </nav>
@@ -77,6 +76,23 @@
         </main>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<div class="conatiner-fluid bg-body-tertiary">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="{% url 'animal-list' %}" class="nav-link px-2 text-body-secondary">Cadastro de Animal</a></li>
+          <li class="nav-item"><a href="{% url 'movimentacaoanimal-list' %}" class="nav-link px-2 text-body-secondary">Movimentação</a></li>
+          <li class="nav-item"><a href="{% url 'saudemedicamento-list' %}" class="nav-link px-2 text-body-secondary">Saúde e Medicação</a></li>
+          <li class="nav-item"><a href="{% url 'reproducao-list' %}" class="nav-link px-2 text-body-secondary">Reprodução</a></li>
+          <li class="nav-item"><a href="{% url 'pesagem-list' %}" class="nav-link px-2 text-body-secondary">Pesagem</a></li>
+          <li class="nav-item"><a href="{% url 'genealogia-list' %}" class="nav-link px-2 text-body-secondary">Genealogia</a></li>
+          <li class="nav-item"><a href="{% url 'custo-list' %}" class="nav-link px-2 text-body-secondary">Custos</a></li>
+          <li class="nav-item"><a href="{% url 'condicaoambiental-list' %}" class="nav-link px-2 text-body-secondary">Condições Ambientais</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 Somos todos Nerds</p>
+      </footer>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
