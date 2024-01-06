@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit">Login</button>
-  </form>
+<h1 class = 'text-center bg-success font-weight-bold text-light mb-5'>Login</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col ">
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% bootstrap_form form%}
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>
+  
 {% endblock %}
