@@ -6,7 +6,91 @@
 
 {% block content %}
     <div class="container-fluid">
-        <h2>Bem-vindo à Página Inicial</h2>
+        <h1 class = 'text-center bg-success font-weight-bold text-light mb-5'>Bem-vindo à Fazenda Itapirema</h1>        
     </div>
-    <!-- Adicione o conteúdo que desejar para a página inicial -->
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col">     
+
+            <ul>
+                <h3 class = 'text-center bg-success font-weight-bold text-light'>Lista de Animais</h3> 
+                <table class="table table-secondary table-striped align-baseline">
+                    <thead>
+                        <tr>
+                            <th scope="col">Identificação</th>
+                            <th scope="col">Raça</th>
+                            <th scope="col">Foto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for animal in object_list %}
+                            <td>{{ animal.identificacao }}</td>
+                            <td>{{ animal.raca }}</td>
+                            <td>
+                            {% if animal.foto %}
+                                <img src="{{ animal.foto.url }}" alt="{{ animal.identificacao }} Foto" width="200">
+                            {% else %}
+                                <span>Sem foto</span>
+                            {% endif %}
+                            </td>
+                        </tr>                    
+                        {% endfor %}
+                    </tbody>
+                </table>                    
+            </ul>
+            
+          </div>
+          
+          <div class="col">
+            <ul>
+                <h3 class = 'text-center bg-success font-weight-bold text-light'>Linhagem</h3> 
+                <table class="table table-secondary table-striped align-baseline">
+                    <thead>
+                        <tr>
+                            <th scope="col">Pai</th>
+                            <th scope="col">Foto Pai</th>
+                            <th scope="col">Mãe</th>
+                            <th scope="col">Foto Mãe</th>
+                            <th scope="col">Filho</th>
+                            <th scope="col">Foto Filho</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for genealogia in object_list %}
+                            <tr>
+                                <td>{{ genealogia.pai.identificacao|default:'N/A' }}</td>
+                                <td>
+                                    {% if genealogia.pai.foto %}
+                                        <img src="{{ genealogia.pai.foto.url }}" alt="{{ genealogia.pai.foto.name }} Foto" width="100">
+                                    {% else %}
+                                        <span>Sem foto</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ genealogia.mae.identificacao|default:'N/A' }}</td>
+                                <td>
+                                    {% if genealogia.mae.foto %}
+                                        <img src="{{ genealogia.mae.foto.url }}" alt="{{ genealogia.mae.foto.name }} Foto" width="100">
+                                    {% else %}
+                                        <span>Sem foto</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ genealogia.filho.identificacao|default:'N/A' }}</td>
+                                <td>
+                                    {% if genealogia.filho.foto %}
+                                        <img src="{{ genealogia.filho.foto.url }}" alt="{{ genealogia.filho.foto.name }} Foto" width="100">
+                                    {% else %}
+                                        <span>Sem foto</span>
+                                    {% endif %}
+                                </td>
+                               
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </ul>            
+          </div>
+        </div>
+    </div>
 {% endblock %}
