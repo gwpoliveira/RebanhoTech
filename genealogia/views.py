@@ -10,24 +10,24 @@ class GenealogiaListView(LoginRequiredMixin,ListView):
     template_name = 'genealogia/genealogia_list.html'
     paginate_by = 10
 
-class GenealogiaCreateView(LoginRequiredMixin,CreateView):
+class GenealogiaCreateView(LoginRequiredMixin, CreateView):
     model = Genealogia
     template_name = 'genealogia/genealogia_form.html'
     form_class = GenealogiaForm
     success_url = reverse_lazy('genealogia-list')
 
     def form_valid(self, form):
-        form.instance.foto_animal = form.instance.identificacao.foto
+        form.instance.foto_animal = form.instance.filho.foto
         return super().form_valid(form)
 
-class GenealogiaUpdateView(LoginRequiredMixin,UpdateView):
+class GenealogiaUpdateView(LoginRequiredMixin, UpdateView):
     model = Genealogia
     template_name = 'genealogia/genealogia_form.html'
     form_class = GenealogiaForm
     success_url = reverse_lazy('genealogia-list')
 
     def form_valid(self, form):
-        form.instance.foto_animal = form.instance.identificacao.foto
+        form.instance.foto_animal = form.instance.filho.foto
         return super().form_valid(form)
 
 class GenealogiaDeleteView(LoginRequiredMixin,DeleteView):
