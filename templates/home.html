@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            {% for animal in object_list %}
+                            {% for animal in cadastro_animais %}
                             <td>{{ animal.identificacao }}</td>
                             <td>{{ animal.raca }}</td>
                             <td>
@@ -38,8 +38,9 @@
                         {% endfor %}
                     </tbody>
                 </table>                    
-            </ul>
-            
+                
+            </ul>           
+                                    
           </div>
           
           <div class="col">
@@ -58,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for genealogia in object_list %}
+                        {% for genealogia in genealogia %}
                             <tr>
                                 <td>{{ genealogia.pai.identificacao|default:'N/A' }}</td>
                                 <td>
@@ -89,7 +90,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </ul>            
+            </ul>  
+                    
           </div>
         </div>
     </div>
